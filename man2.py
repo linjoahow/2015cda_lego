@@ -19,8 +19,7 @@ class MAN(object):
         outstring = '''
 這是 2015CDA 協同專案下的 cdag7模組下的 MAN 類別.<br /><br />
 <!-- 這裡採用相對連結, 而非網址的絕對連結 (這一段為 html 註解) -->
-<a href="http://cdag7lego-40223139.rhcloud.com/man2/assembly">執行  body</a><br /><br />
-<a href="assembly">執行  MAN 類別中的 assembly 方法</a><br /><br />
+<a href="http://g720lego-40223120.rhcloud.com/man2/assembly">執行  leg</a><br /><br />
 請確定下列零件於 V:/home/lego/man 目錄中, 且開啟空白 Creo 組立檔案.<br />
 <a href="/static/lego_man.7z">lego_man.7z</a>(滑鼠右鍵存成 .7z 檔案)<br />
 '''
@@ -243,17 +242,18 @@ var assembly = model;
 // 開始執行組立, 全部採函式呼叫組立
 /////////////////////////////////////////////////////////////////
 
-// Body 與空組立檔案採三個平面約束組立
-// 空組立面為 ASM_TOP, ASM_FRONT, ASM_RIGHT
-// Body 組立面為 TOP, FRONT, RIGHT
-// 若 featID=0 表示為空組立檔案, 而且函式會傳回第一個組立件的 featID
+
+
+                              
+// Body 與 WAIST 採三個平面約束組立
+// Body 組立面為 DTM4, DTM5, DTM6
 // WAIST 組立面為 DTM1, DTM2, DTM3, 組立增量次序為 6, 與 body 採三面 mate 組立
-three_plane_assembly2(session, assembly, transf, featID, 0, "LEGO_WAIST.prt", "DTM4", "DTM5", "DTM6", "DTM1", "DTM2", "DTM3"); 
+three_plane_assembly2(session, assembly, transf, 40, 0, "LEGO_WAIST.prt", "DTM4", "DTM5", "DTM6", "DTM1", "DTM2", "DTM3"); 
 // 右腳
-axis_plane_assembly(session, assembly, transf, featID, 6, 
+axis_plane_assembly(session, assembly, transf, 40, 1, 
                               "LEGO_LEG_RT.prt", "A_8", "DTM4", "A_10", "DTM1");
 // 左腳
-axis_plane_assembly(session, assembly, transf, featID, 6, 
+axis_plane_assembly(session, assembly, transf, 40, 1, 
                               "LEGO_LEG_LT.prt", "A_8", "DTM5", "A_10", "DTM1");
 
 // regenerate 並且 repaint 組立檔案
